@@ -2,6 +2,7 @@ Initialize a new CL project.
 
 Includes:
 
+* A new directory for the project
 * A package.lisp file containing a package definition
 * A src/ subdirectory
 * ASDF system
