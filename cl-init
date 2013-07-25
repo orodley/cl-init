@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ $# -ne 1 ]; then
+	echo "Usage: `basename $0` [project name]"
+	exit 1
+else
+	name=$1
+fi
+
+# TODO: Check that the project name has no special chars that shouldn't
+# be in a directory name or in a CL symbol (that is, would require escaping)
+# Or maybe warn the user and then create a directory friendly name, like
+# github does with new repos
+mkdir $name
+cd $name
+
+# package.lisp
+echo "\
+(defpackage :$name
+  (:include :cl))" > package.lisp
