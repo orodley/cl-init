@@ -18,3 +18,21 @@ cd $name
 echo "\
 (defpackage :$name
   (:include :cl))" > package.lisp
+
+# Prompt user for description
+temp=`mktemp`
+echo > $temp
+echo Enter a brief description of your project on the line above >> $temp
+echo Only the first line of this file is used >> $temp
+
+# Check if $EDITOR is set
+if [ -z "$EDITOR" ]; then
+	echo NOTE: '$EDITOR' is unset: defaulting to nano >> $temp
+	nano $temp
+else
+	$EDITOR $temp
+fi
+
+head -1 $temp > README.md
+
+rm $temp
