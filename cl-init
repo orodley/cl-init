@@ -47,3 +47,19 @@ echo "\
                 :depends-on (\"package\"))))" > $name.asd
 
 mkdir src
+
+# Git repo
+git init
+echo '*.fasl' > .gitignore
+
+# Select editor-specific files to ignore. Only vim for now
+case $EDITOR in
+	vi | vim )
+		echo '*~'        > .git/info/exclude
+		echo '*.sw[op]' >> .git/info/exclude
+		;;
+esac
+
+# Initial commit
+git add .gitignore package.lisp $name.asd README.md
+git commit -m 'Package, ASDF system, README and .gitignore'
