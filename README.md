@@ -13,4 +13,3 @@ Includes:
   * A .gitignore ignoring "*.fasl" files
   * Lines in .git/info/exclude to ignore editor files
   * An initial commit containing all the aforementioned files
-Initialize a new CL project.
