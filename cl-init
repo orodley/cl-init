@@ -12,6 +12,10 @@ fi
 # Or maybe warn the user and then create a directory friendly name, like
 # github does with new repos
 mkdir $name
+if [ $? -ne 0 ]; then
+	exit
+fi
+
 cd $name
 
 # package.lisp
