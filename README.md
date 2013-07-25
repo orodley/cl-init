@@ -9,6 +9,7 @@ Includes:
   * Including the package.lisp file
   * A "src" module depending on package.lisp
   * A description, which the user enters
+* A README.md file, also containing the description
 * A new git repository
   * A .gitignore ignoring "*.fasl" files
   * Lines in .git/info/exclude to ignore editor files
