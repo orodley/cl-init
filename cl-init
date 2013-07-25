@@ -17,7 +17,7 @@ cd $name
 # package.lisp
 echo "\
 (defpackage :$name
-  (:include :cl))" > package.lisp
+  (:use :cl))" > package.lisp
 
 # Prompt user for description
 temp=`mktemp`
@@ -33,6 +33,17 @@ else
 	$EDITOR $temp
 fi
 
-head -1 $temp > README.md
+desc=`head -1 $temp`
+echo $desc > README.md
 
 rm $temp
+
+# ASDF system
+echo "\
+(asdf:defsystem :$name
+  :description \"$desc\"
+  :components ((:file \"package\")
+               (:module \"src\"
+                :depends-on (\"package\"))))" > $name.asd
+
+mkdir src
